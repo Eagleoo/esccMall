@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--<LinearLayout-->
+        <!--android:id="@+id/transparent"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="25dp"-->
+        <!--android:background="@android:color/transparent"-->
+        <!--android:orientation="vertical"-->
+        <!--android:visibility="gone">-->
+
+    <!--</LinearLayout>-->
+
+
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:background="@drawable/step_background">
+
+        <RelativeLayout
+            android:id="@+id/relative2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent">
+            <com.makeramen.roundedimageview.RoundedImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="@dimen/_40dp"
+                android:layout_height="@dimen/_40dp"
+                android:src="@drawable/map"
+                android:layout_margin="@dimen/_10dp"
+                android:scaleType="fitXY"
+                app:riv_border_color="@android:color/transparent"
+                app:riv_border_width="1dip"
+                app:riv_corner_radius="1dip"
+                app:riv_mutate_background="true"
+                app:riv_oval="true"
+                android:id="@+id/map"
+                android:visibility="gone"/>
+
+            <com.yda.esccmall.widget.QQCustomView
+                android:id="@+id/qqcustomview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="今日"
+                android:layout_centerHorizontal="true"
+                android:textColor="#0D96A0"
+                android:layout_marginTop="140dp"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/tv_km"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="累计行走：2.3Km"
+                android:layout_centerHorizontal="true"
+                android:textColor="#0D96A0"
+                android:layout_marginTop="220dp"
+                android:textSize="14sp"/>
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:layout_marginTop="@dimen/_20dp">
+        <RelativeLayout
+            android:id="@+id/relative1"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:background="@android:color/transparent"
+            >
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="25dp"
+                android:layout_height="wrap_content"
+                android:scaleType="centerInside"
+                android:src="@mipmap/arrow"
+                android:tint="@color/white"
+                android:layout_marginLeft="5dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="行走赛"
+                android:textColor="@color/white"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="5dp"
+                android:textSize="18sp"/>
+
+            <ImageView
+                android:id="@+id/record"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:scaleType="centerInside"
+                android:src="@drawable/record"
+                android:tint="@color/white"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/_10dp"/>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/relative"
+        android:background="#F3FEFF">
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/transparent"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="@android:color/transparent"
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/rel">
+
+        <include layout="@layout/null_data_layout1" />
+
+        <android.support.design.widget.CoordinatorLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/coordinat">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fadingEdge="none"
+                android:background="@android:color/transparent"
+                app:behavior_hideable="false"
+                android:visibility="gone"
+                app:behavior_peekHeight="260dp"
+                app:layout_behavior="com.yda.esccmall.widget.BottomSheetBehavior2"/>
+
+        </android.support.design.widget.CoordinatorLayout>
+    </RelativeLayout>
+
+
+
+
+
+</RelativeLayout>

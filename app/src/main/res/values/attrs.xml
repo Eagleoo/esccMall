@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="MoreTextView">
+        <attr name="drawable_src" format="reference" />
+        <attr name="imageHight" format="dimension" />
+        <attr name="imageWidth" format="dimension" />
+        <attr name="imageLocation">
+            <enum name="left" value="0" />
+            <enum name="top" value="1" />
+            <enum name="right" value="2" />
+            <enum name="bottom" value="3" />
+        </attr>
+
+        <attr name="millisinfuture" format="integer"/>
+        <attr name="countdowninterva" format="integer"/>
+        <attr name="normalColor" format="color"/>
+        <attr name="countDownColor" format="color"/>
+
+
+
+    </declare-styleable>
+
+    <declare-styleable name="ViewfinderView">
+        <attr name="corner_color" format="color"/>
+        <attr name="laser_color" format="color"/>
+        <attr name="frame_color" format="color" />
+        <attr name="mask_color" format="color" />
+        <attr name="result_point_color" format="color"/>
+        <attr name="result_color" format="color" />
+        <attr name="label_text_color" format="color"/>
+        <attr name="label_text" format="string"/>
+        <attr name="label_text_size" format="float"/>
+    </declare-styleable>
+
+    <declare-styleable name="PercentCircle">
+        <attr name="radius" format="integer"/>
+        <attr name="background_color" format="color"/>
+        <attr name="ring_color" format="color"/>
+        <attr name="text_color" format = "color"/>
+
+    </declare-styleable>
+
+    <declare-styleable name="PwdEditText">
+        <attr name="style" format="enum">
+            <enum name="rectangle" value="0" />
+            <enum name="roundRectangle" value="1" />
+        </attr>
+        <attr name="pwdCount" format="integer" />
+        <attr name="strokeRadius" format="dimension" />
+        <attr name="strokeWidth" format="dimension" />
+        <attr name="strokeColor" format="color" />
+        <attr name="dotColor" format="color" />
+        <attr name="dotRadius" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="GroupRecyclerView">
+        <attr name="group_height" format="dimension" />
+        <attr name="group_child_offset" format="dimension" />
+        <attr name="group_background" format="color" />
+        <attr name="group_text_color" format="color" />
+        <attr name="group_text_size" format="dimension" />
+        <attr name="group_center" format="boolean" />
+        <attr name="group_padding_left" format="dimension" />
+        <attr name="group_padding_right" format="dimension" />
+        <attr name="group_has_header" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomView">
+        <attr name="inside_color" format="color" />
+        <attr name="outside_color" format="color" />
+        <attr name="text_colors" format="color" />
+        <attr name="step" format="integer" />
+        <attr name="step_count" format="integer" />
+        <attr name="company" format="string" />
+        <attr name="arc_stroke_widths" format="integer" />
+    </declare-styleable>
+
+</resources>

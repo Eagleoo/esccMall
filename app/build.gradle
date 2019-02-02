@@ -1,0 +1,177 @@
+apply plugin: 'com.android.application'
+//apply plugin: 'com.android.library'
+apply plugin: 'com.mob.sdk'
+android {
+
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    useLibrary 'org.apache.http.legacy'
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.yda.esccmall"
+        minSdkVersion 16
+        targetSdkVersion 27
+        versionCode 100
+        versionName "1.0.0"
+        multiDexEnabled true
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
+
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: "com.yda.esccmall",
+                JPUSH_APPKEY : "01e29991ec223d1f5913dd34", //JPush上注册的包名对应的appkey.
+                JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+        ]
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    signingConfigs {
+
+        def alias = 'newandroidkey'
+        def password = 'wang3feng2'
+        def filePath = 'D:/Yang/Android/project/key/android.keystore'
+        debug {
+            keyAlias alias
+            keyPassword password
+            storeFile file(filePath)
+            storePassword(password)
+        }
+        release {
+
+
+            keyAlias alias
+            keyPassword password
+            storeFile file(filePath)
+            storePassword(password)
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+//            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFile 'D:/Yang/Android/project/key/android.keystore'
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+}
+
+MobSDK {
+    appKey "2943996928dd5"
+    appSecret "98cf9a9e2670b0297208ec41292e34fc"
+
+    ShareSDK {
+        //平台配置信息
+        devInfo {
+            SinaWeibo {
+                appKey "568898243"
+                appSecret "38a4f8204cc784f81f9f0daaf31e02e3"
+                callbackUri "http://www.sharesdk.cn"
+                shareByAppClient false
+            }
+            Wechat {
+                appId "wx595f67ceba0d45f3"
+                appSecret "f67f9ae853a0dd817093f48a1f2cf8c3"
+            }
+            WechatMoments {
+                id 5
+                sortId 5
+                appId "wx595f67ceba0d45f3"
+                appSecret "f67f9ae853a0dd817093f48a1f2cf8c3"
+                bypassApproval false
+                enable true
+            }
+
+            QZone {
+                id 3
+                sortId 3
+                appId "1108042546"
+                appKey "naQx6tPVsqXZ6Im5"
+                shareByAppClient true
+                bypassApproval false
+                enable true
+            }
+
+            QQ {
+                appId "1108042546"
+                appKey "naQx6tPVsqXZ6Im5"
+                bypassApproval false
+                shareByAppClient true
+            }
+
+            ShortMessage {
+                id 13
+                sortId 13
+                enable true
+            }
+
+
+        }
+    }
+
+}
+
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.+'
+    implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:design:27.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    implementation 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    implementation 'com.nineoldandroids:library:2.4.0'
+    implementation 'com.lzy.net:okgo:3.0.4'
+    implementation files('libs/alipaySdk-20180403.jar')
+    implementation files('libs/libammsdk.jar')
+    implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
+    implementation 'org.apache.httpcomponents:httpcore:4.4.1'
+    implementation 'org.apache.httpcomponents:httpclient:4.5'
+    implementation 'com.google.code.gson:gson:2.8.4'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.10'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+    implementation 'com.xhb:xbanner:1.3.9'
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    implementation 'cn.jiguang.sdk:jpush:3.1.1'
+    // 此处以JPush 3.1.1 版本为例。
+    implementation 'cn.jiguang.sdk:jcore:1.1.9'
+    implementation 'com.google.zxing:core:3.3.0'
+    implementation 'com.yanzhenjie:permission:2.0.0-rc4'
+    implementation 'com.github.lzyzsd:circleprogress:1.2.1'
+    implementation project(':FlappyBird')
+    implementation 'com.jungly:gridPasswordView:0.3'
+    implementation 'com.github.sd6352051:NiftyNotification:1.2'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-14'
+    implementation 'com.yanzhenjie:sofia:1.0.5'//状态栏侵入
+    implementation 'com.makeramen:roundedimageview:2.3.0'//圆形头像
+    implementation 'com.superluo:textbannerview:1.0.2'//滚动textview
+    implementation 'com.yinglan.alphatabs:library:1.0.8'//仿微信滑动渐变
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'//自定义tablayout
+    implementation 'io.supercharge:shimmerlayout:2.1.0'//预加载
+    implementation 'com.haibin:calendarview:3.4.8'//日历控件
+    implementation 'com.airbnb.android:lottie:2.2.0'
+
+}

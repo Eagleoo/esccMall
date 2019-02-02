@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/gif"
+        android:layout_width="400dp"
+        android:layout_height="450dp"
+        android:layout_centerInParent="true" />
+
+    <ImageView
+        android:alpha="0"
+        android:id="@+id/mission_ok"
+        android:layout_width="240dp"
+        android:layout_height="80dp"
+        android:src="@drawable/mission_ok"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/_50dp"/>
+
+    <Button
+        android:alpha="0"
+        android:id="@+id/mission_btn"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/mission_ok"
+        android:layout_centerHorizontal="true"
+        />
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/mission_btn"
+        android:layout_marginTop="15dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="@dimen/_30dp">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/diamond_test"
+                android:layout_marginRight="@dimen/_20dp"/>
+            <TextView
+                android:id="@+id/tv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+30"
+                android:textColor="@color/number_color"
+                android:textSize="16sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="钻石"
+                android:layout_marginRight="15dp"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/exp"
+                android:layout_marginRight="@dimen/_20dp"/>
+            <TextView
+                android:id="@+id/tv3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+30"
+                android:textColor="@color/number_color"
+                android:textSize="16sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="魅力值"
+                android:layout_marginRight="15dp"
+                android:textSize="16sp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+    <ImageView
+        android:id="@+id/close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:src="@mipmap/cross"
+        android:layout_margin="@dimen/_40dp"/>
+
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/tv4"
+        android:layout_above="@+id/linear"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/tv_gif"/>
+
+</RelativeLayout>

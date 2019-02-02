@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="42dp"
+    android:background="@color/webview"
+    android:paddingLeft="3dp"
+    android:paddingRight="3dp">
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:paddingLeft="10.0dip"
+        android:paddingRight="10.0dip"
+        android:scaleType="centerInside"
+        android:src="@drawable/topback_selector"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/sao_ewm"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_centerVertical="true"
+        android:paddingLeft="12.0dip"
+        android:paddingRight="12.0dip"
+        android:scaleType="centerInside"
+        android:src="@drawable/sao_ewm"
+        android:visibility="gone"
+        android:layout_toRightOf="@+id/back" />
+
+    <TextView
+        android:id="@+id/center"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:singleLine="true"
+        android:textColor="#ffffffff"
+        android:textSize="19dp" />
+    <ImageView
+        android:id="@+id/dian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/dian"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="38dp"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/share_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="40dp"
+        android:src="@drawable/ic_notifications_black_24dp"
+        android:visibility="visible" />
+
+    <RadioButton
+        android:id="@+id/mall_collect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/RadioButtonStyles"
+        android:visibility="gone"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="40dp"
+        android:checked="false"/>
+
+    <TextView
+        android:id="@+id/tv_read"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="40dp"
+        android:visibility="gone"
+        android:text="全部已读"
+        android:padding="3dp"
+        android:background="@drawable/carebackground"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/white"
+        android:textSize="13sp"/>
+
+    <ImageView
+        android:id="@+id/refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:paddingLeft="10.0dip"
+        android:paddingRight="10.0dip"
+        android:scaleType="centerInside"
+        android:src="@drawable/refresh_selector" />
+    <ImageView
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:paddingLeft="10.0dip"
+        android:paddingRight="10.0dip"
+        android:scaleType="centerInside"
+        android:src="@drawable/delete"
+        android:visibility="gone"/>
+
+    <RelativeLayout
+        android:id="@+id/mLyout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="true"
+        >
+
+    </RelativeLayout>
+
+</RelativeLayout>

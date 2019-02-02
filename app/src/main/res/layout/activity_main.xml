@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/main_linear">
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            app:srlPrimaryColor="@color/colorAccent"
+            app:srlAccentColor="@android:color/white"
+            app:srlEnableHeaderTranslationContent="true"
+            app:srlEnableLoadMore="false">
+
+            <com.yda.esccmall.widget.JudgeNestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/scrollview">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/scroll_to_rel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true">
+
+                        <include layout="@layout/activity_diamond" />
+
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="@dimen/_5dp">
+
+                        <ImageView
+                            android:id="@+id/img_news"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="@drawable/news"
+                            android:layout_centerVertical="true"/>
+
+                        <com.superluo.textbannerlibrary.TextBannerView
+                            android:id="@+id/tv_banner"
+                            android:layout_toRightOf="@+id/img_news"
+                            android:layout_width="match_parent"
+                            android:layout_height="38dp"
+                            app:setDirection="bottom_to_top"
+                            app:setTextSize="14sp"
+                            app:setTextColor="#000"
+                            android:layout_toLeftOf="@+id/more"
+                            android:layout_marginLeft="3dp"/>
+                        <TextView
+                            android:id="@+id/more"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="更多"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/text_color"/>
+                    </RelativeLayout>
+
+                    <android.support.design.widget.TabLayout
+                        android:id="@+id/tablayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/MyTablayoutstyle"/>
+
+
+                    <com.yda.esccmall.widget.CustomViewPager
+                        android:id="@+id/viewpager"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:id="@+id/guide"
+                        android:layout_width="wrap_content"
+                        android:layout_height="120dp"
+                        android:background="@drawable/guide"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="@dimen/_10dp"
+                        android:layout_marginRight="@dimen/_10dp"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="@dimen/_20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp">
+                        <View
+                            android:layout_width="5dp"
+                            android:layout_height="@dimen/_20dp"
+                            android:background="@color/text_color"
+                            android:layout_gravity="center_vertical"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="线上商城"
+                            android:textSize="18sp"
+                            android:textColor="@color/text_color"
+                            android:layout_marginLeft="@dimen/_5dp"
+                            android:layout_gravity="center_vertical"/>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/escc_mall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="120dp"
+                        android:background="@drawable/esccmall"
+                        android:layout_marginLeft="@dimen/_10dp"
+                        android:layout_marginRight="@dimen/_10dp"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="@dimen/_20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp">
+                        <View
+                            android:layout_width="5dp"
+                            android:layout_height="@dimen/_20dp"
+                            android:background="@color/text_color"
+                            android:layout_gravity="center_vertical"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="线下商家"
+                            android:textSize="18sp"
+                            android:textColor="@color/text_color"
+                            android:layout_marginLeft="@dimen/_5dp"
+                            android:layout_gravity="center_vertical"/>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/esccshop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="120dp"
+                        android:background="@drawable/esccshop"
+                        android:layout_marginLeft="@dimen/_10dp"
+                        android:layout_marginRight="@dimen/_10dp"/>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="@dimen/_20dp"
+                        android:layout_marginRight="@dimen/_20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp">
+                        <View
+                            android:id="@+id/view"
+                            android:layout_width="5dp"
+                            android:layout_height="@dimen/_20dp"
+                            android:background="@color/text_color"
+                            android:layout_centerVertical="true"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="最新任务"
+                            android:textSize="18sp"
+                            android:textColor="@color/text_color"
+                            android:layout_marginLeft="@dimen/_5dp"
+                            android:layout_toRightOf="@+id/view"
+                            android:layout_centerVertical="true"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true">
+                            <TextView
+                                android:id="@+id/mission_more"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16sp"
+                                android:textColor="@color/text_color"
+                                android:text="更多"
+                                android:layout_gravity="center_vertical"/>
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/ic_chevron_right_black_24dp"
+                                android:layout_gravity="center_vertical"/>
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                    <com.yda.esccmall.widget.ListViewForScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/listviewFS">
+
+                    </com.yda.esccmall.widget.ListViewForScrollView>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="@dimen/_20dp"
+                        android:layout_marginRight="@dimen/_20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp">
+                        <View
+                            android:id="@+id/view1"
+                            android:layout_width="5dp"
+                            android:layout_height="@dimen/_20dp"
+                            android:background="@color/text_color"
+                            android:layout_centerVertical="true"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="热门活动"
+                            android:textSize="18sp"
+                            android:textColor="@color/text_color"
+                            android:layout_marginLeft="@dimen/_5dp"
+                            android:layout_toRightOf="@+id/view1"
+                            android:layout_centerVertical="true"/>
+
+                        <LinearLayout
+                            android:id="@+id/more_game"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16sp"
+                                android:textColor="@color/text_color"
+                                android:text="更多"
+                                android:layout_gravity="center_vertical"/>
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/ic_chevron_right_black_24dp"
+                                android:layout_gravity="center_vertical"/>
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                    <!--<android.support.v7.widget.RecyclerView-->
+                        <!--android:id="@+id/recycler_view"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:layout_marginBottom="@dimen/_10dp">-->
+
+                    <!--</android.support.v7.widget.RecyclerView>-->
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="none"
+                        android:layout_marginBottom="@dimen/_10dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <GridView
+                                android:id="@+id/gv_horizontal_gridview_line"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scrollbars="none" />
+                        </LinearLayout>
+                    </HorizontalScrollView>
+
+
+                    <include layout="@layout/list_layout" />
+                </LinearLayout>
+            </com.yda.esccmall.widget.JudgeNestedScrollView>
+
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/AppTheme.Toolbar"
+            android:layout_marginBottom="0dp"
+            android:background="@android:color/transparent"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+
+                <android.support.v7.widget.ButtonBarLayout
+                    android:id="@+id/buttonBarLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <com.makeramen.roundedimageview.RoundedImageView
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:background="@drawable/portrait"
+                            android:id="@+id/portrait_status"
+                            app:riv_corner_radius="1dip"
+                            app:riv_border_width="1dip"
+                            app:riv_border_color="@android:color/transparent"
+                            app:riv_mutate_background="true"
+                            app:riv_oval="true"
+                            android:scaleType="fitXY"
+                            android:layout_marginTop="@dimen/_20dp" />
+                        <TextView
+                            android:id="@+id/toolbar_username"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:maxLines="1"
+                            android:text="提尔城"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:layout_marginTop="20dp"/>
+
+                        <ImageView
+                            android:id="@+id/ib_calendar_status"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="@dimen/_10dp"
+                            android:src="@drawable/ic_calendar"
+                            android:layout_marginTop="22dp"/>
+                    </RelativeLayout>
+
+
+
+
+                </android.support.v7.widget.ButtonBarLayout>
+
+
+            </LinearLayout>
+
+        </android.support.v7.widget.Toolbar>
+    </RelativeLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:id="@+id/linear_shimer"
+        android:visibility="gone">
+
+        <include layout="@layout/null_data_layout"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

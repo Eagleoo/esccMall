@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+<io.supercharge.shimmerlayout.ShimmerLayout
+
+    android:id="@+id/shimmer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:visibility="visible"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="10dp"
+    app:shimmer_animation_duration="3000">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:background="@color/shimmer_background_color"
+            android:layout_marginBottom="30dp"
+           />
+
+        <RelativeLayout
+            android:id="@+id/grid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_20dp">
+            <View
+                android:id="@+id/view1"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@color/shimmer_background_color"
+                android:layout_margin="@dimen/_10dp"/>
+            <View
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@color/shimmer_background_color"
+                android:layout_margin="@dimen/_10dp"
+                android:layout_toRightOf="@+id/view1"/>
+
+            <View
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@color/shimmer_background_color"
+                android:layout_margin="@dimen/_10dp"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:background="@color/shimmer_background_color"
+            android:layout_marginLeft="@dimen/_5dp"
+            android:layout_marginRight="@dimen/_5dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@color/shimmer_background_color"
+            android:layout_marginLeft="@dimen/_5dp"
+            android:layout_marginRight="@dimen/_5dp"/>
+
+    </LinearLayout>
+
+</io.supercharge.shimmerlayout.ShimmerLayout>
+
+</RelativeLayout>

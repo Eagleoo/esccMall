@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/head"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="25dp"
+            android:layout_height="wrap_content"
+            android:scaleType="centerInside"
+            android:src="@mipmap/arrow"
+            android:layout_marginLeft="5dp"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PK赛"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/head">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/relative_other"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#f98426" >
+
+                    <ProgressBar
+                        android:id="@+id/progress_other"
+                        android:layout_width="match_parent"
+                        android:layout_height="16dp"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:progressDrawable="@drawable/shape_gradient"
+                        android:layout_margin="@dimen/_10dp"
+                        android:max="100"/>
+
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/portrait_other"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/portrait"
+                        app:riv_mutate_background="true"
+                        app:riv_oval="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/progress_other"
+                        android:layout_marginTop="@dimen/_50dp"
+                        app:riv_corner_radius="2dp"
+                        app:riv_border_width="2dp"
+                        app:riv_border_color="#FCB25B"/>
+
+                    <ImageView
+                        android:id="@+id/pk_fail_other"
+                        android:layout_width="wrap_content"
+                        android:layout_height="80dp"
+                        android:src="@drawable/pk_fail"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:visibility="gone"/>
+                    <ImageView
+                        android:id="@+id/pk_win_other"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/pk_win"
+                        android:layout_marginTop="@dimen/_30dp"
+                        android:visibility="gone"
+                        android:layout_centerHorizontal="true"/>
+
+                    <LinearLayout
+                        android:id="@+id/lv"
+                        android:layout_width="80dp"
+                        android:layout_height="@dimen/_20dp"
+                        android:orientation="horizontal"
+                        android:background="@drawable/carebackground1"
+                        android:layout_below="@+id/portrait_other"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/_10dp">
+
+                        <ImageView
+                            android:layout_width="@dimen/_20dp"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/lv_icon"/>
+                        <TextView
+                            android:id="@+id/lv_other"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="等级：Lv12"
+                            android:textSize="@dimen/_10dp"
+                            android:layout_gravity="center_vertical"/>
+
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/username_other"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="提尔城-机器人"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:layout_below="@+id/lv"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/_30dp"
+                        android:layout_marginBottom="@dimen/_20dp"/>
+
+                    <ImageView
+                        android:id="@+id/smoke_t_other"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/smoke_m_other"
+                        android:background="@drawable/desktop_smoke_t"
+                        android:visibility="gone" />
+
+                    <ImageView
+                        android:id="@+id/smoke_m_other"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@drawable/desktop_smoke_m"
+                        android:visibility="gone"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/relative_me"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#28B5FC">
+
+                    <ProgressBar
+                        android:id="@+id/progress_me"
+                        android:layout_width="match_parent"
+                        android:layout_height="16dp"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:progressDrawable="@drawable/shape_gradient1"
+                        android:layout_margin="@dimen/_10dp"
+                        android:max="100"/>
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/portrait_me"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/portrait_me"
+                        app:riv_border_color="#63CBFB"
+                        app:riv_border_width="2dp"
+                        app:riv_corner_radius="2dp"
+                        app:riv_mutate_background="true"
+                        app:riv_oval="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/progress_me"
+                        android:layout_marginTop="@dimen/_50dp"/>
+
+                    <ImageView
+                        android:id="@+id/pk_fail_me"
+                        android:layout_width="wrap_content"
+                        android:layout_height="80dp"
+                        android:src="@drawable/pk_fail"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:visibility="gone"/>
+
+                    <ImageView
+                        android:id="@+id/pk_win_me"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/pk_win"
+                        android:layout_marginTop="@dimen/_30dp"
+                        android:visibility="gone"
+                        android:layout_centerHorizontal="true"/>
+
+                    <LinearLayout
+                        android:id="@+id/lv_me_linear"
+                        android:layout_width="80dp"
+                        android:layout_height="@dimen/_20dp"
+                        android:orientation="horizontal"
+                        android:background="@drawable/carebackground"
+                        android:layout_below="@+id/portrait_me"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/_10dp">
+
+                        <ImageView
+                            android:layout_width="@dimen/_20dp"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/lv_icon"/>
+                        <TextView
+                            android:id="@+id/lv_me"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="等级：Lv12"
+                            android:textSize="@dimen/_10dp"
+                            android:layout_gravity="center_vertical"/>
+
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/username_me"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="提尔城-张远航"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:layout_below="@+id/lv_me_linear"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/_30dp"
+                        android:layout_marginBottom="@dimen/_20dp"/>
+
+                    <ImageView
+                        android:id="@+id/smoke_t_me"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/smoke_m_me"
+                        android:background="@drawable/desktop_smoke_t"
+                        android:visibility="gone"/>
+
+                    <ImageView
+                        android:id="@+id/smoke_m_me"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@drawable/desktop_smoke_m"
+                        android:visibility="gone"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/vs"
+                android:layout_marginTop="100dp"/>
+
+            <ImageView
+                android:id="@+id/rocket_other"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/rocket1"
+                android:layout_alignParentLeft="true"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/_50dp"
+                android:layout_marginLeft="@dimen/_10dp"/>
+            <ImageView
+                android:id="@+id/rocket_me"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/rocket"
+                android:layout_alignParentRight="true"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/_50dp"
+                android:layout_marginRight="@dimen/_10dp"/>
+
+            <TextView
+                android:id="@+id/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="详细PK数据"
+                android:textSize="18sp"
+                android:textColor="#000"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/linear"
+                android:layout_marginTop="10dp"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv"
+                android:layout_marginTop="@dimen/_10dp"/>
+            <LinearLayout
+                android:id="@+id/load_linear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv"
+                android:layout_marginTop="@dimen/_50dp"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal">
+                <ProgressBar
+                    android:id="@+id/load_progress"
+                    android:layout_width="@dimen/_30dp"
+                    android:layout_height="@dimen/_30dp"
+                    android:indeterminateDrawable="@drawable/shape_gradient_load"
+                    android:layout_gravity="center_vertical"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="正在加载"
+                    android:layout_gravity="center_vertical"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

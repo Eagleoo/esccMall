@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginTop="@dimen/_10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:background="@drawable/layout_grey_sel_bg"
+    android:paddingTop="5dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp">
+
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="提尔城等级"
+                android:textColor="#616161"
+                android:layout_centerHorizontal="true" />
+            <TextView
+                android:id="@+id/lv_other"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lv12"
+                android:textColor="#f98426"
+                android:layout_alignParentLeft="true"
+                android:paddingTop="@dimen/_10dp"
+                android:textSize="20sp"/>
+            <TextView
+                android:id="@+id/lv_me"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lv12"
+                android:textColor="#28B5FC"
+                android:layout_alignParentRight="true"
+                android:paddingTop="@dimen/_10dp"
+                android:textSize="20sp"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="@dimen/_10dp"
+            android:layout_marginRight="@dimen/_10dp">
+
+            <ProgressBar
+                android:id="@+id/pro_other"
+                android:layout_width="wrap_content"
+                android:layout_height="6dp"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:progressDrawable="@drawable/shape_gradient_item"/>
+
+            <ImageView
+                android:id="@+id/pk_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/pk_lv_icon" />
+
+            <ProgressBar
+                android:id="@+id/pro_me"
+                android:layout_width="wrap_content"
+                android:layout_height="6dp"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:progressDrawable="@drawable/shape_gradient_item1"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

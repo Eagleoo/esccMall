@@ -1,0 +1,78 @@
+package com.yda.yiyunchain.Bean;
+
+import java.io.Serializable;
+import java.util.List;
+
+public class BilistBean implements Serializable {
+
+
+    /**
+     * status : 1
+     * list : [{"id":1,"name":"ESCC","creatTime":"/Date(1531995642087)/","tips":0.1},{"id":2,"name":"USD","creatTime":"/Date(1531995662453)/","tips":0.01}]
+     */
+
+    private int status;
+    private List<ListBean> list;
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public List<ListBean> getList() {
+        return list;
+    }
+
+    public void setList(List<ListBean> list) {
+        this.list = list;
+    }
+
+    public static class ListBean {
+        /**
+         * id : 1
+         * name : ESCC
+         * creatTime : /Date(1531995642087)/
+         * tips : 0.1
+         */
+
+        private int id;
+        private String name;
+        private String creatTime;
+        private double tips;
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getCreatTime() {
+            return creatTime;
+        }
+
+        public void setCreatTime(String creatTime) {
+            this.creatTime = creatTime;
+        }
+
+        public double getTips() {
+            return tips;
+        }
+
+        public void setTips(double tips) {
+            this.tips = tips;
+        }
+    }
+}

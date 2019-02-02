@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/img_list"
+        android:layout_marginTop="@dimen/_5dp"
+        android:layout_marginBottom="@dimen/_5dp">
+
+        <TextView
+            android:id="@+id/rank_num"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_vertical"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="2"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_vertical">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/rank_portrait"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/portrait"
+                app:riv_border_color="#fff"
+                app:riv_border_width="1dip"
+                app:riv_corner_radius="1dip"
+                app:riv_mutate_background="true"
+                app:riv_oval="true"
+                android:layout_marginRight="10dp"/>
+            <LinearLayout
+                android:layout_width="80dp"
+                android:layout_height="@dimen/_20dp"
+                android:layout_gravity="center_vertical">
+                <TextView
+                    android:id="@+id/rank_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="小星星"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxEms="8"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/rank_diamond"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="1230"
+            android:layout_weight="3"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_vertical"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

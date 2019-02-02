@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#26b6f9">
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="25dp"
+        android:layout_height="wrap_content"
+        android:scaleType="centerInside"
+        android:src="@mipmap/arrow"
+        android:layout_margin="10dp"
+        android:tint="@color/white"/>
+
+    <!--<FrameLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerInParent="true">-->
+
+        <!--<RelativeLayout-->
+            <!--android:layout_width="120dp"-->
+            <!--android:layout_height="120dp"-->
+            <!--android:background="@drawable/circle_bg"-->
+            <!--android:layout_gravity="center">-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="GO"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:textColor="#26b6f9"-->
+                <!--android:textSize="40sp"/>-->
+
+
+        <!--</RelativeLayout>-->
+
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/rel_mid"-->
+            <!--android:layout_width="160dp"-->
+            <!--android:layout_height="160dp"-->
+            <!--android:background="@drawable/circle_bg"-->
+            <!--android:alpha="0.3"-->
+            <!--android:layout_gravity="center"/>-->
+
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/rel_max"-->
+            <!--android:layout_width="210dp"-->
+            <!--android:layout_height="210dp"-->
+            <!--android:background="@drawable/circle_bg"-->
+            <!--android:alpha="0.2"-->
+            <!--android:layout_gravity="center"/>-->
+
+    <!--</FrameLayout>-->
+    <RelativeLayout
+        android:id="@+id/relative_go"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:background="@drawable/circle_bg"
+        android:layout_centerInParent="true">
+
+        <io.supercharge.shimmerlayout.ShimmerLayout
+
+            android:id="@+id/shimmer_linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:shimmer_animation_duration="2000"
+            android:layout_centerInParent="true">
+            <TextView
+                android:id="@+id/start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GO!"
+                android:layout_gravity="center"
+                android:textColor="#26b6f9"
+                android:textSize="40sp"/>
+        </io.supercharge.shimmerlayout.ShimmerLayout>
+
+
+        <ImageView
+            android:id="@+id/bowen1"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_20dp"
+            android:background="@drawable/pk_ready_bowen"
+            android:layout_alignParentBottom="true"
+            android:alpha="0.5"/>
+
+        <ImageView
+            android:id="@+id/bowen2"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:background="@drawable/pk_ready_bowen"
+            android:layout_alignParentBottom="true"
+            android:alpha="0.5"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/pk_ready_bg"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:id="@+id/pk_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="点击开始"
+        android:layout_below="@+id/img"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:textSize="18sp"/>
+
+    <com.yda.esccmall.widget.WaveView
+        android:id="@+id/wave1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30dp"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="com.yda.yiyunchain.activity.LoginActivity">
+
+    <TextView
+        android:id="@+id/downloadpic"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="保存图片" />
+
+    <TextView
+        android:id="@+id/reQRcode"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="识别二维码" />
+
+
+</LinearLayout>

@@ -1,0 +1,102 @@
+package com.yda.yiyunchain.activity;
+
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.yda.yiyunchain.R;
+import com.yda.yiyunchain.util.SelectorFactory;
+import com.yda.yiyunchain.util.Util;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+public class LaunchActivity extends BaseActivity {
+
+    @BindView(R.id.guideFrameLayout)
+    FrameLayout guideFrameLayout;
+    @BindView(R.id.pointLinearLayout)
+    LinearLayout pointLinearLayout;
+    @BindView(R.id.luncher)
+    ImageView luncher;
+    @BindView(R.id.skipTv)
+    TextView skipTv;
+
+
+    public int pos = 0;
+    private int[] pic = {R.mipmap.ic_launcher};
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_lunch);
+        ButterKnife.bind(this);
+        skipTv.setBackground(SelectorFactory.newShapeSelector()
+                .setDefaultBgColor(Color.parseColor("#00ffffff"))
+                .setPressedBgColor(Color.parseColor("#489FE4"))
+                .setStrokeWidth(Util.dpToPx(context, 0.5f))
+                .setCornerRadius(Util.dpToPx(context, 5))
+                .setDefaultStrokeColor(Color.parseColor("#ffffff"))
+                .create(context));
+//        if (getSharedPreferences("launch", MODE_PRIVATE).getBoolean("launch", true)) {
+//            init();
+//        } else {
+
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                enter();
+            }
+        }, 3000);
+//        }
+    }
+
+
+    @OnClick({R.id.skip, R.id.next, R.id.skipTv})
+    public void click(View view) {
+        switch (view.getId()) {
+            case R.id.skipTv:
+            case R.id.skip:
+                enter();
+                break;
+            case R.id.next:
+                if (pos == pic.length - 1) {
+                    enter();
+                }
+                break;
+        }
+    }
+
+    int star = 0;
+
+    public synchronized void enter() {
+        if (star > 0) {
+            return;
+        }
+        star++;
+        guideFrameLayout.setVisibility(View.GONE);
+        luncher.setVisibility(View.VISIBLE);
+
+
+        Bundle bundle = context.getIntent().getExtras();
+        if (!Util.isNull(bundle) && !Util.isNull(bundle.getString("name"))) {
+            Intent intent = new Intent(context, MainActivity.class);
+            intent.putExtra("bundle", bundle);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(context, LoginActivity.class);
+            startActivity(intent);
+        }
+        finish();
+    }
+
+
+}

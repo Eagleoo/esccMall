@@ -1,0 +1,673 @@
+package com.yda.yiyunchain.activity;
+
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.signature.StringSignature;
+import com.google.gson.Gson;
+import com.yda.yiyunchain.Bean.BilistBean;
+import com.yda.yiyunchain.Bean.UserInfoBean;
+import com.yda.yiyunchain.HttpUtil.HttpManger;
+import com.yda.yiyunchain.R;
+import com.yda.yiyunchain.util.SelectorFactory;
+import com.yda.yiyunchain.util.Util;
+import com.yda.yiyunchain.utils.CommonUtil;
+import com.yda.yiyunchain.zxing.activity.CaptureActivity;
+
+import org.json.JSONObject;
+
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+
+public class ZhuanZangActivity extends BaseActivity implements View.OnClickListener {
+
+    public static String GetNowTime() {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date curDate = new Date(System.currentTimeMillis());// 获取当前时间
+        String str = formatter.format(curDate);
+        return str;
+    }
+
+    View lin1;
+    TextView tv1;
+
+    View lin2;
+    TextView tv2;
+
+    View lin3;
+    TextView tv3;
+
+    View lin4;
+    TextView tv4;
+
+
+    View lin5;
+
+    View lin6;
+
+    View lin7;
+    TextView tv7;
+
+    View lin8;
+    TextView tv8;
+
+    View lin9;
+    TextView tv9;
+
+    View lin10;
+    TextView tv10;
+
+    View lin11;
+    TextView tv11;
+
+    View lin12;
+    TextView tv12;
+
+
+    ImageView sao, imagecode;
+
+    int radius;
+    Drawable lindr;
+
+    Drawable tvdr;
+
+    TextView checkbi;
+
+    TextView getsmscode;
+
+    View lin51;
+    View lin61;
+    CheckBox cb51;
+    CheckBox cb61;
+    Button sbmit;
+
+    EditText userid, useridtag1, phoneed, number, realmoney, free, password, yanzencode, imagecode_ed;
+
+    TextView center;
+    View refresh;
+
+
+    double lilv = 0;
+
+    //打开扫描界面请求码
+    private int REQUEST_CODE = 0x01;
+    //扫描成功返回码
+    private int RESULT_OK = 0xA1;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_zhuan_zang);
+
+        initui();
+        initstate();
+        get_moneyType_list();
+
+    }
+
+    private void initstate() {
+
+
+        setUserInforState(false);
+        setBizhongState(false, null);
+
+    }
+
+    private void setUserInforState(boolean isShow) {
+        lin2.setVisibility(View.GONE);
+        lin3.setVisibility(View.GONE);
+        if (isShow) {
+            lin2.setVisibility(View.VISIBLE);
+            lin3.setVisibility(View.VISIBLE);
+        }
+
+
+    }
+
+    String bitype = "";
+
+    boolean isShowImagecode = false;
+
+    private void getsmscodeInfo() {
+
+
+        if (isShowImagecode && imagecode_ed.getText().toString().equals("")) {
+            Util.show(context, "请输入图形验证码!");
+            return;
+
+        }
+
+
+        HashMap<String, String> params = new HashMap<>();
+//        params.put("mobile", phoneed.getText().toString());
+        params.put("imgcode", isShowImagecode ? imagecode_ed.getText().toString() : "null");
+        params.put("moneytype", bitype.equals("ESCC") ? "1" : "2");
+        params.put("num", number.getText().toString());
+
+
+        HttpManger.postRequest(context, "/tools/submit_api.ashx?action=" + "user_verify_smscode_img", params, "转账中..", new HttpManger.DoRequetCallBack() {
+//        HttpManger.postRequest(context, "/asp/login.asp", params, "登录中", new HttpManger.DoRequetCallBack() {
+
+
+            @Override
+            public void onSuccess(String o) {
+                try {
+                    JSONObject jsonObject = new JSONObject(o);
+                    String msgStr = jsonObject.getString("msg");
+                    int status = jsonObject.getInt("status");
+                    String showimg = jsonObject.getString("showimg");
+                    Log.e("msgStr","msgStr"+msgStr);
+                    Util.show(context, msgStr);
+                    if (status == 1) {
+                        new CountDownTimer(60000, 1000) {
+                            @Override
+                            public void onTick(long millisUntilFinished) {
+                                getsmscode.setEnabled(false);
+                                getsmscode.setText("已发送(" + millisUntilFinished / 1000 + ")");
+
+
+                            }
+
+                            @Override
+                            public void onFinish() {
+
+                                getsmscode.setEnabled(true);
+                                getsmscode.setText("重新获取验证码");
+                            }
+                        }.start();
+                    }
+                    if (showimg.equals("1")) {
+
+                        lin12.setVisibility(View.VISIBLE);
+
+                        if (status!=1){
+                            Glide.with(context).load("http://apphk.esccclub.com/tools/verify_code.ashx?token="+ UserInfoBean.getUser().getToken()).signature(new StringSignature(GetNowTime())).into(imagecode);
+                        }
+
+//                        Glide.with(context).load("http://apphk.esccclub.com/tools/verify_code.ashx").diskCacheStrategy(DiskCacheStrategy.NONE).into(imagecode);
+
+//                        Glide.with(context).load("http://apphk.esccclub.com/tools/verify_code.ashx")
+//                                .into(imagecode);
+                        isShowImagecode = true;
+                    } else {
+                        lin12.setVisibility(View.GONE);
+                        isShowImagecode = false;
+                    }
+
+                    setUserInforState(true);
+
+
+                } catch (Exception e) {
+                    Log.e("msgStr e","e"+e.getMessage());
+                }
+            }
+
+            @Override
+            public void onError(String o) {
+
+            }
+        },true);
+    }
+
+    private void setBizhongState(boolean isShow, View view) {
+
+        Log.e("setBizhongState", "isShow" + isShow);
+        lin5.setVisibility(View.GONE);
+        lin6.setVisibility(View.GONE);
+        if (isShow) {
+            lin5.setVisibility(View.VISIBLE);
+            lin6.setVisibility(View.VISIBLE);
+        }
+        if (view != null) {
+            cb51.setChecked(false);
+            cb61.setChecked(false);
+            switch (view.getId()) {
+                case R.id.lin51:
+                    cb51.setChecked(true);
+                    bitype = "ESCC";
+                    lilv = ESCCLV;
+                    break;
+                case R.id.lin61:
+                    cb61.setChecked(true);
+                    bitype = "USD";
+                    lilv = USDLV;
+                    break;
+            }
+            checkbi.setText(bitype);
+            setMoeny();
+        }
+    }
+
+    private void initui() {
+
+        radius = Util.dpToPx(context, 2);
+        lindr = SelectorFactory.newShapeSelector()
+                .setDefaultStrokeColor(Color.parseColor("#e8b979"))
+                .setStrokeWidth(Util.dpToPx(context, 1f))
+                .setDefaultBgColor(Color.parseColor("#ffffff"))
+                .setCornerRadius(radius)
+                .create(context);
+        tvdr = SelectorFactory.newShapeSelector()
+                .setDefaultBgColor(Color.parseColor("#e8b979"))
+                .setCornerRadius(radius, 0, 0, radius)
+                .create(context);
+        sao = findViewById(R.id.sao);
+        imagecode = findViewById(R.id.imagecode);
+        sao.setOnClickListener(this);
+
+
+        findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        userid = findViewById(R.id.userid);
+        userid.setOnFocusChangeListener(new android.view.View.
+                OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 此处为得到焦点时的处理内容
+                } else {
+                    // 此处为失去焦点时的处理内容
+                    GetUserByGuid(userid.getText().toString());
+                }
+            }
+        });
+        checkbi = findViewById(R.id.checkbi);
+        getsmscode = findViewById(R.id.getsmscode);
+        getsmscode.setOnClickListener(this);
+        sbmit = findViewById(R.id.sbmit);
+        center = findViewById(R.id.center);
+        refresh = findViewById(R.id.refresh);
+        refresh.setVisibility(View.GONE);
+        center.setText("转账");
+        useridtag1 = findViewById(R.id.useridtag1);
+        phoneed = findViewById(R.id.phoneed);
+        number = findViewById(R.id.number);
+        realmoney = findViewById(R.id.realmoney);
+        free = findViewById(R.id.free);
+        password = findViewById(R.id.password);
+        yanzencode = findViewById(R.id.yanzencode);
+        imagecode_ed = findViewById(R.id.imagecode_ed);
+        sbmit.setOnClickListener(this);
+        lin51 = findViewById(R.id.lin51);
+        cb51 = findViewById(R.id.cb51);
+        cb61 = findViewById(R.id.cb61);
+        lin51.setOnClickListener(this);
+        lin61 = findViewById(R.id.lin61);
+        lin61.setOnClickListener(this);
+        checkbi.setTextColor(Color.GRAY);
+        checkbi.setOnClickListener(this);
+
+        lin1 = findViewById(R.id.lin1);
+        tv1 = findViewById(R.id.tv1);
+
+        lin2 = findViewById(R.id.lin2);
+        tv2 = findViewById(R.id.tv2);
+        tv2.setText("用户名");
+
+        lin3 = findViewById(R.id.lin3);
+        tv3 = findViewById(R.id.tv3);
+        tv3.setText("电话");
+
+        lin4 = findViewById(R.id.lin4);
+        tv4 = findViewById(R.id.tv4);
+        tv4.setText("选择币种");
+
+        lin5 = findViewById(R.id.lin5);
+
+        lin6 = findViewById(R.id.lin6);
+
+        lin7 = findViewById(R.id.lin7);
+        tv7 = findViewById(R.id.tv7);
+        tv7.setText("数量");
+
+        lin8 = findViewById(R.id.lin8);
+        tv8 = findViewById(R.id.tv8);
+        tv8.setText("实际到账");
+
+        lin9 = findViewById(R.id.lin9);
+        tv9 = findViewById(R.id.tv9);
+        tv9.setText("手续费");
+
+        lin10 = findViewById(R.id.lin10);
+        tv10 = findViewById(R.id.tv10);
+        tv10.setText("支付密码");
+
+        lin11 = findViewById(R.id.lin11);
+        tv11 = findViewById(R.id.tv11);
+        tv11.setText("手机验证码");
+
+
+        lin12 = findViewById(R.id.lin12);
+        tv12 = findViewById(R.id.tv12);
+
+        tv1.setBackground(tvdr);
+        lin1.setBackground(lindr);
+
+        tv2.setBackground(tvdr);
+        lin2.setBackground(lindr);
+
+        tv3.setBackground(tvdr);
+        lin3.setBackground(lindr);
+
+        tv4.setBackground(tvdr);
+        lin4.setBackground(lindr);
+
+
+        lin51.setBackground(lindr);
+
+        lin61.setBackground(lindr);
+
+        tv7.setBackground(tvdr);
+        lin7.setBackground(lindr);
+
+        tv8.setBackground(tvdr);
+        lin8.setBackground(lindr);
+
+        tv9.setBackground(tvdr);
+        lin9.setBackground(lindr);
+
+        tv10.setBackground(tvdr);
+        lin10.setBackground(lindr);
+
+        tv11.setBackground(tvdr);
+        lin11.setBackground(lindr);
+
+        tv12.setBackground(tvdr);
+        lin12.setBackground(lindr);
+
+        sbmit.setBackground(SelectorFactory.newShapeSelector()
+                .setDefaultStrokeColor(Color.parseColor("#e8b979"))
+                .setStrokeWidth(Util.dpToPx(context, 1f))
+                .setDefaultBgColor(Color.parseColor("#e8b979"))
+                .setCornerRadius(radius)
+                .create(context));
+
+        number.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                setMoeny();
+            }
+        });
+    }
+
+    private void setMoeny() {
+
+        String numberStr = number.getText().toString();
+        if (!numberStr.equals("")) {
+            int numint = Integer.parseInt(numberStr);
+            double numend = numint * lilv;
+//            float   scale  =   34.236323;
+            DecimalFormat fnum = new DecimalFormat("##0.00");
+            String dd = fnum.format(numend);
+
+            String dd1 = fnum.format(numint - numend);
+            realmoney.setText(dd1);
+            free.setText(dd);
+        }
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.getsmscode:
+                getsmscodeInfo();
+                break;
+            case R.id.sbmit:
+                sumbit();
+                break;
+            case R.id.lin61:
+                setBizhongState(false, v);
+                break;
+            case R.id.lin51:
+                setBizhongState(false, v);
+                break;
+            case R.id.checkbi:
+                setBizhongState(true, null);
+                break;
+            case R.id.sao:
+
+                final String[] requestPermissionstr = {
+
+                        android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                        android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+
+                };
+                Util.checkpermissions(requestPermissionstr, context, new Util.PermissionsCallBack() {
+                    @Override
+                    public void success() {
+                        if (CommonUtil.isCameraCanUse()) {
+                            Intent intent = new Intent(context, CaptureActivity.class);
+                            startActivityForResult(intent, REQUEST_CODE);
+                        } else {
+                            Toast.makeText(context, "请打开此应用的摄像头权限！", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void failure() {
+
+                    }
+                });
+
+                break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //扫描结果回调
+        if (resultCode == RESULT_OK) { //RESULT_OK = -1
+            Bundle bundle = data.getExtras();
+            String scanResult = bundle.getString("qr_scan_result");
+            //将扫描出的信息显示出来
+            Log.e("将扫描出的信息显示出来", "scanResult:" + scanResult);
+            userid.setText(scanResult);
+            GetUserByGuid(scanResult);
+        }
+    }
+
+    private void GetUserByGuid(String guidno) {
+        if (guidno.equals("")) {
+            return;
+        }
+        HashMap<String, String> params = new HashMap<>();
+        params.put("guidno", guidno);
+        String action = "GetUserByGuid";
+        HttpManger.postRequest(context, "/tools/submit_api.ashx?action=" + action, params, "查询中..", new HttpManger.DoRequetCallBack() {
+//        HttpManger.postRequest(context, "/asp/login.asp", params, "登录中", new HttpManger.DoRequetCallBack() {
+
+
+            @Override
+            public void onSuccess(String o) {
+
+                Log.e("GetUserByGuid", "onSuccess");
+
+                useridtag1.setText("");
+                phoneed.setText("");
+
+                try {
+                    JSONObject jsonObject = new JSONObject(o);
+                    String msgStr = jsonObject.getString("msg");
+                    int status = jsonObject.getInt("status");
+                    Util.show(context, msgStr);
+                    if (status == 1) {
+                        useridtag1.setText(jsonObject.getString("user_name"));
+                        phoneed.setText(jsonObject.getString("mobile"));
+
+                    }
+
+                    setUserInforState(true);
+
+
+                } catch (Exception e) {
+
+                }
+
+
+            }
+
+            @Override
+            public void onError(String o) {
+                Log.e("GetUserByGuid", "onError");
+
+
+            }
+        });
+    }
+
+    private double ESCCLV;
+    private double USDLV;
+
+    private void get_moneyType_list() {
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("top", "10");
+        String action = "get_moneyType_list";
+        HttpManger.postRequest(context, "/tools/submit_api.ashx?action=" + action, params, "转账中..", new HttpManger.DoRequetCallBack() {
+//        HttpManger.postRequest(context, "/asp/login.asp", params, "登录中", new HttpManger.DoRequetCallBack() {
+
+
+            @Override
+            public void onSuccess(String o) {
+                try {
+                    Gson gson = new Gson();
+                    BilistBean bilistBean = gson.fromJson(o, BilistBean.class);
+                    ESCCLV = bilistBean.getList().get(0).getTips();
+                    USDLV = bilistBean.getList().get(1).getTips();
+
+                } catch (Exception e) {
+
+                }
+
+            }
+
+            @Override
+            public void onError(String o) {
+
+            }
+        }, true);
+    }
+
+
+    private void sumbit() {
+
+
+        String useridStr = userid.getText().toString();
+        String pasStr = password.getText().toString();
+        String numStr = number.getText().toString();
+        String yazm = yanzencode.getText().toString();
+
+        if (useridStr.equals("")) {
+            Util.show(context, "请输入目标用户");
+            return;
+        }
+
+        if (pasStr.equals("")) {
+            Util.show(context, "请输入密码");
+            return;
+        }
+
+        if (numStr.equals("")) {
+            Util.show(context, "请输入数量");
+            return;
+        }
+
+        if (bitype.equals("")) {
+            Util.show(context, "请选择币种");
+            return;
+        }
+
+        if (yazm.equals("")) {
+            Util.show(context, "请输入验证码");
+            return;
+        }
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("toUser", useridStr);
+        params.put("moneyTypeid", bitype.equals("ESCC") ? "1" : "2"); //1 2
+        params.put("num", numStr);
+        params.put("spassword", pasStr);
+        params.put("yzcode", yazm);
+        params.put("imgyzcode", imagecode_ed.getText().toString());
+        String action = "moneyTransfer";
+        HttpManger.postRequest(context, "/tools/submit_api.ashx?action=" + action, params, "转账中..", new HttpManger.DoRequetCallBack() {
+//        HttpManger.postRequest(context, "/asp/login.asp", params, "登录中", new HttpManger.DoRequetCallBack() {
+
+
+            @Override
+            public void onSuccess(String o) {
+
+                Log.e("sumbit","onSuccess:"+o);
+                try {
+                    JSONObject jsonObject = new JSONObject(o);
+                    String msgStr = jsonObject.getString("msg");
+                    int status = jsonObject.getInt("status");
+                    String showimg="";
+                    try {
+                         showimg = jsonObject.getString("showimg");
+                    }catch (Exception e){
+
+                    }
+
+//                    int status = jsonObject.getInt("status");
+                    Util.show(context, msgStr);
+                    if (status == 1) {
+                        finish();
+
+                    }else {
+                        if (showimg!=null&&!showimg.equals("")){
+                            Glide.with(context).load("http://apphk.esccclub.com/tools/verify_code.ashx?token="+ UserInfoBean.getUser().getToken()).signature(new StringSignature(GetNowTime())).into(imagecode);
+                        }
+
+                    }
+
+                    setUserInforState(true);
+
+
+                } catch (Exception e) {
+                    Log.e("sumbit","Exception:"+e.toString());
+                }
+            }
+
+            @Override
+            public void onError(String o) {
+                Log.e("sumbit","onError:"+o);
+                Glide.with(context).load("http://apphk.esccclub.com/tools/verify_code.ashx?token="+ UserInfoBean.getUser().getToken()).signature(new StringSignature(GetNowTime())).into(imagecode);
+            }
+        },true);
+    }
+
+
+}

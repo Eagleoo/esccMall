@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="42dp"
+    android:background="@color/colorPrimary"
+    android:paddingLeft="3dp"
+    android:paddingRight="3dp">
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:paddingLeft="10.0dip"
+        android:paddingRight="10.0dip"
+        android:scaleType="centerInside"
+        android:src="@drawable/topback_selector" />
+
+    <TextView
+        android:id="@+id/center"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:singleLine="true"
+        android:textColor="#ffffffff"
+        android:textSize="19dp" />
+
+    <ImageView
+        android:id="@+id/share_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/refresh"
+        android:src="@mipmap/shareiv"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:paddingLeft="10.0dip"
+        android:paddingRight="10.0dip"
+        android:scaleType="centerInside"
+        android:src="@drawable/refresh_selector" />
+
+</RelativeLayout>

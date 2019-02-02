@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        body {
+            background: #fa1e0d;
+        }
+
+        .btn {
+            line-height: 40px;
+            margin: 10px;
+            background: aquamarine;
+        }
+    </style>
+</head>
+<body>
+<h2>WebView</h2>
+<div><span>请输入要传入的数据</span><input type="text" id="input"></div>
+<div id="btn"><span class="btn">点我</span></div>
+<script type="text/javascript">
+    var btnEle = document.getElementById("btn")
+    var inputEle = document.getElementById("input")
+    btnEle.addEventListener("click", function () {
+        var str = inputEle.value
+
+        //检查是否右webviewcall 这个元素对象
+        if (window.webviewcall) {
+            webviewcall.setValue(str,"1345")
+        }else {
+            alert("webviewcall not found")
+        }
+
+    })
+    var remotd=function (str) {
+        inputEle.value=str
+    }
+</script>
+</body>
+</html>

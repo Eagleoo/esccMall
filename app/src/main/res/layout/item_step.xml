@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView android:id="@+id/card_view"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginTop="1dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    card_view:cardBackgroundColor="@color/white"
+    card_view:cardCornerRadius="1dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingTop="@dimen/_10dp"
+        android:paddingBottom="@dimen/_10dp">
+
+        <TextView
+            android:id="@+id/rank_num"
+            android:layout_width="@dimen/_50dp"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            style="@style/tweetName"
+            android:paddingLeft="@dimen/_10dp"
+            android:textSize="@dimen/_16sp"
+            android:layout_centerVertical="true"/>
+
+        <ImageView
+            android:id="@+id/img_rank"
+            android:layout_width="@dimen/_30dp"
+            android:layout_height="@dimen/_30dp"
+            android:layout_centerVertical="true"
+            android:paddingLeft="@dimen/_10dp"/>
+
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="@dimen/_40dp"
+            android:layout_height="@dimen/_40dp"
+            android:layout_toRightOf="@+id/rank_num"
+            android:layout_marginLeft="@dimen/_20dp"
+            android:scaleType="fitXY"
+            app:riv_border_color="@android:color/transparent"
+            app:riv_border_width="1dip"
+            app:riv_corner_radius="1dip"
+            app:riv_mutate_background="true"
+            app:riv_oval="true"
+            android:id="@+id/portrait"/>
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/tweetText"
+            android:layout_toRightOf="@+id/portrait"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/black80"/>
+
+        <TextView
+            android:id="@+id/step_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/tweetName"
+            android:layout_centerVertical="true"
+            android:textColor="#1675FF"
+            android:layout_toLeftOf="@+id/step"/>
+        <TextView
+            android:id="@+id/step"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="步"
+            android:layout_marginRight="@dimen/_30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
